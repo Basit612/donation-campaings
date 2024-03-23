@@ -1,18 +1,34 @@
 import { createBrowserRouter } from "react-router-dom";
+import Root from "../layout/Root";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Hone from "../Pages/Home/Hone";
+import DonationDetails from "../Pages/DonationDetails/DonationDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children:[
+      {
+        path: "/",
+        element: <Hone></Hone>,
+      },
+      {
+        path: "/donation",
+        element: <h1>Donation</h1>
+      },
+      {
+        path: "/statistics",
+        element: <h1>Statistics</h1>
+      },
+      {
+        path: "/donation-details/:id",
+        element:<DonationDetails></DonationDetails>,
+      },
+    ]
   },
-  {
-    path: "/donation",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "/statistcs",
-    element: <div>Hello world!</div>,
-  },
+  
 ]);
 
 export default router
